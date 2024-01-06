@@ -1,8 +1,6 @@
 package com.example.tablelingdingdong.domain.model;
 
-import com.example.tablelingdingdong.domain.SignUpForm;
 import com.example.tablelingdingdong.domain.StoreForm;
-import com.example.tablelingdingdong.type.UserType;
 import lombok.*;
 
 import javax.persistence.*;
