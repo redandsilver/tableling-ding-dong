@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 public class CustomerController {
     private final JwtAuthenticationProvider provider;
     private final CustomerService customerService;
+    // customer 개인정보
     @GetMapping("/getInfo")
     public ResponseEntity<CustomerDto> getInfo(@RequestHeader(name = "X-AUTH-TOKEN")String token){
         UserVo vo = provider.getUserVo(token);

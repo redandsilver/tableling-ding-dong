@@ -22,7 +22,7 @@ import java.util.List;
 public class ManagerController {
     private final JwtAuthenticationProvider provider;
     private final ManagerService managerService;
-
+    // manager 개인정보
     @GetMapping("/getInfo")
     public ResponseEntity<ManagerDto> getInfo(@RequestHeader(name = "X-AUTH-TOKEN")String token){
         UserVo vo = provider.getUserVo(token);
@@ -32,6 +32,7 @@ public class ManagerController {
         return ResponseEntity.ok(ManagerDto.from(manager));
     }
 
+    // 파트너 가입
     @PutMapping("/join/partnership")
     public ResponseEntity<String> joinPartnership(@RequestHeader(name = "X-AUTH-TOKEN")String token){
         UserVo vo = provider.getUserVo(token);
@@ -40,6 +41,7 @@ public class ManagerController {
         return ResponseEntity.ok("파트너십에 가입되었습니다. 가게를 등록해보세요!");
     }
 
+    // 가게 등록
     @PostMapping("/register/store")
     public ResponseEntity<String> registerStore(@RequestHeader(name = "X-AUTH-TOKEN")String token,
                                                 @RequestBody StoreForm storeForm){
@@ -47,6 +49,7 @@ public class ManagerController {
         managerService.registerStore(vo,storeForm);
         return ResponseEntity.ok(" 가게가 등록되었습니다. ");
     }
+    // manager가 등록한 모든 가게 보기
     @GetMapping("/all/stores")
     public ResponseEntity<List<Store>> getAllStores(@RequestHeader(name = "X-AUTH-TOKEN")String token){
         UserVo vo = provider.getUserVo(token);

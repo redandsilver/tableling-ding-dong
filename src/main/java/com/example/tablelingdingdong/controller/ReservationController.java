@@ -22,6 +22,8 @@ public class ReservationController {
     private final CustomerService customerService;
     private final ReservationServcie reservationServcie;
     private final ManagerService managerService;
+
+    //customer가 가게 예약
     @PostMapping("customer/{storeId}")
     public ResponseEntity<?> makeReservation(
             @RequestHeader(name = "X-AUTH-TOKEN")String token, @RequestBody ReservationForm form, @PathVariable Long storeId){
@@ -32,6 +34,7 @@ public class ReservationController {
 
         return ResponseEntity.ok( reservationServcie.makeReservation(customer,form,storeId));
     }
+    // manager가 가게 예약 확인
     @PostMapping("manager/{reservationId}")
     public ResponseEntity<?> confirmReservation(
             @RequestHeader(name = "X-AUTH-TOKEN")String token, @RequestBody ReservationForm form, @PathVariable Long reservationId){

@@ -10,10 +10,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class StoreController {
     private final StoreService storeService;
+    // 기본 화면: 모든 가게들 보여주기
     @GetMapping("/home")
     public ResponseEntity<?> getAllStores(){
         return ResponseEntity.ok(storeService.getAllStores());
     }
+    // 가게 상세 페이지
     @GetMapping("/store/{id}")
     public ResponseEntity<?> getAllStores(@PathVariable Long id){
         return ResponseEntity.ok(storeService.getStoreDetail(id));

@@ -14,10 +14,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class SignInController {
     private final SignInApplication signInApplication;
+    // manager 로그인
     @PostMapping("/manager")
     public ResponseEntity<String> signInManager(@RequestBody SignInForm form){
         return ResponseEntity.ok(signInApplication.managerLoginToken(form));
     }
+    // customer 로그인
     @PostMapping("/customer")
     public ResponseEntity<String> signInCustomer(@RequestBody SignInForm form){
         return ResponseEntity.ok(signInApplication.customerLoginToken(form));
