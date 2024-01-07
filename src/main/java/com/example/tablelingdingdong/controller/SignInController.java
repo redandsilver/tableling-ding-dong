@@ -16,8 +16,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class SignInController {
     private final SignInApplication signInApplication;
     @PostMapping("/manager")
-    public ResponseEntity<String> signInCustomer(@RequestBody SignInForm form){
+    public ResponseEntity<String> signInManager(@RequestBody SignInForm form){
         return ResponseEntity.ok(signInApplication.managerLoginToken(form));
+    }
+    @PostMapping("/customer")
+    public ResponseEntity<String> signInCustomer(@RequestBody SignInForm form){
+        return ResponseEntity.ok(signInApplication.customerLoginToken(form));
     }
 
 }

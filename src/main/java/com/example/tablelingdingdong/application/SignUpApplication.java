@@ -4,15 +4,13 @@ import com.example.tablelingdingdong.client.MailgunClient;
 
 import com.example.tablelingdingdong.client.mailgun.SendMailForm;
 import com.example.tablelingdingdong.domain.SignUpForm;
+import com.example.tablelingdingdong.domain.model.Customer;
 import com.example.tablelingdingdong.domain.model.Manager;
-import com.example.tablelingdingdong.domain.repository.ManagerRepository;
-import com.example.tablelingdingdong.exception.CustomException;
-import com.example.tablelingdingdong.exception.ErrorCode;
+import com.example.tablelingdingdong.service.CustomerService;
 import com.example.tablelingdingdong.service.ManagerService;
 import com.example.tablelingdingdong.type.UserType;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.RandomStringUtils;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -23,8 +21,8 @@ import java.util.Locale;
 @RequiredArgsConstructor
 public class SignUpApplication {
     private final MailgunClient mailgunClient;
-    private final ManagerRepository managerRepository;
     private final ManagerService managerService;
+    private final CustomerService customerService;
     @Transactional
     public String signUpManager(SignUpForm signUpForm) {
         managerService.isExistEmail(signUpForm.getEmail());
@@ -33,6 +31,15 @@ public class SignUpApplication {
         managerService.changeValidateEmail(manager.getId(),code);
         sendMail(signUpForm,UserType.MANAGER,code);
         return manager.getEmail();
+    }
+    @Transactional
+    public String signUpCustomer(SignUpForm signUpForm) {
+        customerService.isExistEmail(signUpForm.getEmail());
+        Customer customer = customerService.signUp(signUpForm);
+        String code = getRandomCode();
+        customerService.changeValidateEmail(customer.getId(),code);
+        sendMail(signUpForm,UserType.CUSTOMER,code);
+        return customer.getEmail();
     }
     private void sendMail(SignUpForm form, UserType userType, String code){
         String usertype = userType.toString().toLowerCase(Locale.ROOT);
@@ -65,6 +72,10 @@ public class SignUpApplication {
 
     public void verifyManager(String email, String code) {
         managerService.verifyEmail(email,code);
+
+    }
+    public void verifyCustomer(String email, String code) {
+        customerService.verifyEmail(email,code);
 
     }
 }
