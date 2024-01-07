@@ -14,14 +14,9 @@ import com.example.tablelingdingdong.domain.repository.ReservationRepository;
 import com.example.tablelingdingdong.domain.repository.StoreRepository;
 import com.example.tablelingdingdong.exception.CustomException;
 import com.example.tablelingdingdong.exception.ErrorCode;
-import com.example.tablelingdingdong.type.UserType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import javax.transaction.Transactional;
-import java.time.LocalDateTime;
-import java.util.Locale;
-import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class ReservationServcie {

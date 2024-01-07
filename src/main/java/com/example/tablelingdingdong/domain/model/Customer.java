@@ -30,7 +30,6 @@ public class Customer extends BaseEntity {
     private String verificationCode;
     private LocalDateTime verifyExpiredAt;
     private boolean verify;
-    private boolean isPartnership;
     private UserType userType;
 
     @OneToMany(mappedBy = "customer")
@@ -48,7 +47,6 @@ public class Customer extends BaseEntity {
                 .phone(signUpForm.getPhone())
                 .verificationCode(null)
                 .verify(false)
-                .isPartnership(false)
                 .userType(UserType.MANAGER)
                 .build();
 
