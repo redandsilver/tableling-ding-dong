@@ -1,14 +1,12 @@
 package com.example.tablelingdingdong.service;
 
 import com.example.tablelingdingdong.domain.Dto.UserVo;
-import com.example.tablelingdingdong.domain.SignUpForm;
-import com.example.tablelingdingdong.domain.StoreForm;
+import com.example.tablelingdingdong.domain.form.ReservationForm;
+import com.example.tablelingdingdong.domain.form.SignUpForm;
 import com.example.tablelingdingdong.domain.model.Customer;
-import com.example.tablelingdingdong.domain.model.Manager;
-import com.example.tablelingdingdong.domain.model.Store;
+import com.example.tablelingdingdong.domain.model.Reservation;
 import com.example.tablelingdingdong.domain.repository.CustomerRepository;
-import com.example.tablelingdingdong.domain.repository.ManagerRepository;
-import com.example.tablelingdingdong.domain.repository.StoreRepository;
+import com.example.tablelingdingdong.domain.repository.ReservationRepository;
 import com.example.tablelingdingdong.exception.CustomException;
 import com.example.tablelingdingdong.exception.ErrorCode;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +15,6 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -77,11 +74,5 @@ public class CustomerService {
     public Optional<Customer> findByIdAndEmail(Long id, String email) {
         return customerRepository.findByIdAndEmail(id,email);
     }
-    @Transactional
-    public void joinPartnership(UserVo vo) {
-        Customer customer = this.findByIdAndEmail(vo.getId(),vo.getEmail()).orElseThrow(
-                ()->new CustomException(ErrorCode.NOT_EXIST_USER)
-        );
-        customer.setPartnership(true);
-    }
+
 }

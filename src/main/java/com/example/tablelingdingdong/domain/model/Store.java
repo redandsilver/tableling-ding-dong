@@ -1,9 +1,11 @@
 package com.example.tablelingdingdong.domain.model;
 
-import com.example.tablelingdingdong.domain.StoreForm;
+import com.example.tablelingdingdong.domain.form.StoreForm;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Builder
@@ -24,6 +26,8 @@ public class Store {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "manager_id")
     private Manager manager;
+    @OneToMany(mappedBy = "store")
+    private List<Reservation> reservations;
 
     public static Store from(StoreForm storeForm){
         return Store.builder()
@@ -37,4 +41,11 @@ public class Store {
     public void update(Manager manager) {
         this.manager = manager;
     }
+    public void addReservation(Reservation reservation) {
+        if (reservations == null) {
+            reservations = new ArrayList<>();
+        }
+        reservations.add(reservation);
+    }
+
 }

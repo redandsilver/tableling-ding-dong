@@ -4,7 +4,7 @@ package com.example.tablelingdingdong.controller;
 import com.example.tablelingdingdong.config.security.JwtAuthenticationProvider;
 import com.example.tablelingdingdong.domain.Dto.ManagerDto;
 import com.example.tablelingdingdong.domain.Dto.UserVo;
-import com.example.tablelingdingdong.domain.StoreForm;
+import com.example.tablelingdingdong.domain.form.StoreForm;
 import com.example.tablelingdingdong.domain.model.Manager;
 import com.example.tablelingdingdong.domain.model.Store;
 import com.example.tablelingdingdong.exception.CustomException;

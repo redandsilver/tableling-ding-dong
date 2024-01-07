@@ -1,8 +1,8 @@
 package com.example.tablelingdingdong.service;
 
 import com.example.tablelingdingdong.domain.Dto.UserVo;
-import com.example.tablelingdingdong.domain.SignUpForm;
-import com.example.tablelingdingdong.domain.StoreForm;
+import com.example.tablelingdingdong.domain.form.SignUpForm;
+import com.example.tablelingdingdong.domain.form.StoreForm;
 import com.example.tablelingdingdong.domain.model.Manager;
 import com.example.tablelingdingdong.domain.model.Store;
 import com.example.tablelingdingdong.domain.repository.ManagerRepository;

@@ -1,8 +1,7 @@
 package com.example.tablelingdingdong.controller;
 
 import com.example.tablelingdingdong.application.SignUpApplication;
-import com.example.tablelingdingdong.domain.SignUpForm;
-import com.example.tablelingdingdong.domain.model.Manager;
+import com.example.tablelingdingdong.domain.form.SignUpForm;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

@@ -3,7 +3,7 @@ package com.example.tablelingdingdong.application;
 import com.example.tablelingdingdong.client.MailgunClient;
 
 import com.example.tablelingdingdong.client.mailgun.SendMailForm;
-import com.example.tablelingdingdong.domain.SignUpForm;
+import com.example.tablelingdingdong.domain.form.SignUpForm;
 import com.example.tablelingdingdong.domain.model.Customer;
 import com.example.tablelingdingdong.domain.model.Manager;
 import com.example.tablelingdingdong.service.CustomerService;

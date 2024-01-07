@@ -1,12 +1,13 @@
 package com.example.tablelingdingdong.domain.model;
 
-import com.example.tablelingdingdong.domain.SignUpForm;
+import com.example.tablelingdingdong.domain.form.SignUpForm;
 import com.example.tablelingdingdong.type.UserType;
 import lombok.*;
 import org.hibernate.envers.AuditOverride;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -30,8 +31,11 @@ public class Customer extends BaseEntity {
     private LocalDateTime verifyExpiredAt;
     private boolean verify;
     private boolean isPartnership;
-
     private UserType userType;
+
+    @OneToMany(mappedBy = "customer")
+    private List<Reservation> reservations;
+
 
     public boolean isVerify(){
         return verify;
@@ -49,5 +53,10 @@ public class Customer extends BaseEntity {
                 .build();
 
     }
-
+    public void addReservation(Reservation reservation) {
+        if (reservations == null) {
+            reservations = new ArrayList<>();
+        }
+        reservations.add(reservation);
+    }
 }

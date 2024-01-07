@@ -1,15 +1,12 @@
 package com.example.tablelingdingdong.domain.model;
 
-import com.example.tablelingdingdong.domain.SignUpForm;
+import com.example.tablelingdingdong.domain.form.SignUpForm;
 import com.example.tablelingdingdong.type.UserType;
 import lombok.*;
 import org.hibernate.envers.AuditOverride;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Collection;
 import java.util.List;
 
 @Entity

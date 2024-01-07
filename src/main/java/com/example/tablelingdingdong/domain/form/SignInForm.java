@@ -1,4 +1,4 @@
-package com.example.tablelingdingdong.domain;
+package com.example.tablelingdingdong.domain.form;
 
 import lombok.Getter;
 
